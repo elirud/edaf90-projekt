@@ -29,7 +29,7 @@ export class HeroComponent implements OnInit {
   getHero(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.heroService.getHeroes()
-      .subscribe(heroes => this.hero = heroes[id]);
+      .subscribe(heroes => this.hero = heroes[id - 1]);
   }
   getMatchups(): void {
     const id = +this.route.snapshot.paramMap.get('id');
