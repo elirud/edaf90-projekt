@@ -1,7 +1,9 @@
 
 <div style="width:200px; margin:0 auto;" *ngIf="hero" class="grid grid-pad">
-  <h3>Hero details</h3>
-  <h4>{{hero.localized_name}} has {{hero.legs}} legs</h4>
+  <h3>{{hero.localized_name}}</h3>
+  <img src="https://api.opendota.com/apps/dota2/images/heroes/{{hero.localized_name.toLowerCase().replace(' ', '_')}}_full.png"/>
+  <h5>{{hero.localized_name}} has {{hero.legs}} legs</h5>
+  <div>Counters: </div>
   <button (click)="goBack()">go back</button>
 </div>
 
