@@ -25,7 +25,7 @@ export class PlayerSearchComponent implements OnInit {
   }
 
   getPlayer(account_id: number){
-    this.playerService.getPlayer(account_id);
+    this.playerService.getPlayer(account_id).subscribe(player => this.player = player);
   }
 
 

@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import { PlayerComponent } from './player/player.component';
 import { HeroComponent } from './hero/hero.component';
-import { MatchComponent } from './match/match.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { PlayerSearchComponent} from './player-search/player-search.component';
 
@@ -17,7 +16,6 @@ import { PlayerSearchComponent} from './player-search/player-search.component';
     SearchComponent,
     PlayerComponent,
     HeroComponent,
-    MatchComponent,
     PlayerSearchComponent,
     HeroSearchComponent
   ],
