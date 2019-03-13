@@ -1,0 +1,20 @@
+nav a {
+  padding: 5px 10px;
+  text-decoration: none;
+  margin-top: 10px;
+  margin-left: 10px;
+  display: inline-block;
+  background-color: #7E1116;
+  border-radius: 4px;
+  color: #010201;
+}
+nav a:visited, a:link {
+  color: #607D8B;
+}
+nav a:hover {
+  color: #010201;
+  background-color: #7E1116;
+}
+nav a.active {
+  color: #039be5;
+}
