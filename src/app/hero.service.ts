@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {Observable, of} from 'rxjs';
-import {catchError, filter, map, tap, toArray} from 'rxjs/operators';
+import {catchError, filter, flatMap, map, tap, toArray} from 'rxjs/operators';
 
 import { Hero } from './hero';
 import { Matchup} from './matchup';
@@ -14,10 +14,28 @@ import { Matchup} from './matchup';
 })
 export class HeroService {
   private heroesUrl = 'https://api.opendota.com/api/heroes/';  // URL to web api
-  private apiKey = '?api_key=67a592dc-4f72-48f6-b9f5-b4749e4b8ef2';
-  constructor(private http: HttpClient) {
+  private apiKey = '?api_key=67a592dc-4f72-48f6-b9f5-b4749e4b8ef2'
+  heroes: Hero[];
+  constructor(private http: HttpClient) {  }
+
+  loadHeroes() {
+    this.http.get<Hero[]>(`${this.heroesUrl + this.apiKey}`).subscribe(heroes => {
+      heroes.map( hero => {
+        if (hero.id < 24) {
+          hero.id = hero.id - 1;
+        } else {
+          hero.id = hero.id - 2;
+        }});
+      this.heroes = heroes;
+      });
   }
 
+  /**
+   * Retrieves static heroes from heroservice
+   */
+  getHeroesSync() {
+    return this.heroes;
+  }
   /**
    * GET all heroes
    */
