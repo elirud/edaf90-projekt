@@ -16,7 +16,7 @@ export class PlayerComponent implements OnInit {
   player: Player;
 
   constructor(
-    private route:ActivatedRoute,
+    private route: ActivatedRoute,
     private location: Location,
     private playerService: PlayerService
   ) { }
@@ -25,7 +25,7 @@ export class PlayerComponent implements OnInit {
     this.getPlayer();
   }
 
-  getPlayer(){
+  getPlayer() {
     const id = +this.route.snapshot.paramMap.get('account_id');
     this.playerService.getPlayer(id).subscribe(players => this.player = players);
 

@@ -16,7 +16,7 @@ import { PlayerService } from '../player.service';
   styleUrls: [ './player-search.component.css' ]
 })
 export class PlayerSearchComponent implements OnInit {
-  //players$: Observable<Player>;
+  player: Player;
 
 
   constructor(private playerService: PlayerService) {}

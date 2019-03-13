@@ -1,13 +1,12 @@
 <div style="width:200px; margin:0 auto;" id="search-component">
-    <h4>Player Search</h4>
-  
-    
-  
-    <input ng-model="searchText"></label>
-    <button ng-click="getPlayer(submitFilter())" class="search-button">Submit</button>
-    
-        <a routerLink="/player-detail/{{player.acccount_id}}">
-        </a>
-      
-        
-  </div>
+
+  <h3>Player Search</h3>
+  <i>Use player ID not player nickname.</i>
+
+    <input #playerid ng-model="searchText">
+
+    <button routerLink="/player-detail/{{playerid" ng-click="getPlayer(playerid)" class="search-button">Search</button>
+
+
+
+</div>

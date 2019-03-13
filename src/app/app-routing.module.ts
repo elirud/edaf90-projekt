@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'herosearch', component: HeroSearchComponent },
   { path: 'playersearch', component: PlayerSearchComponent },
   { path: 'matches', component: MatchComponent },
-  { path: 'players', component: PlayerComponent },
+  { path: 'player-detail/:id', component: PlayerComponent },
   { path: 'detail/:id', component: HeroComponent },
 ];
 
