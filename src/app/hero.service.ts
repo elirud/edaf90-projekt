@@ -14,20 +14,12 @@ import { Matchup} from './matchup';
 })
 export class HeroService {
   private heroesUrl = 'https://api.opendota.com/api/heroes/';  // URL to web api
-  private apiKey = '?api_key=67a592dc-4f72-48f6-b9f5-b4749e4b8ef2'
+  private apiKey = '?api_key=67a592dc-4f72-48f6-b9f5-b4749e4b8ef2';
   heroes: Hero[];
   constructor(private http: HttpClient) {  }
 
   loadHeroes() {
-    this.http.get<Hero[]>(`${this.heroesUrl + this.apiKey}`).subscribe(heroes => {
-      heroes.map( hero => {
-        if (hero.id < 24) {
-          hero.id = hero.id - 1;
-        } else {
-          hero.id = hero.id - 2;
-        }});
-      this.heroes = heroes;
-      });
+    this.http.get<Hero[]>(`${this.heroesUrl + this.apiKey}`).subscribe(heroes => this.heroes = heroes);
   }
 
   /**
@@ -48,7 +40,7 @@ export class HeroService {
    * @param id - id on hero to retrieve
    */
   getHero(id: number): Observable<Hero> {
-    return this.http.get<Hero[]>(`${this.heroesUrl + this.apiKey}`)[id];
+    return this.http.get<Hero[]>(`${this.heroesUrl + this.apiKey}`).pipe(map(obs => obs.filter(hero => hero.id === id)[0]));
   }
 
   /**
