@@ -25,9 +25,9 @@ export class PlayerComponent implements OnInit {
     this.getPlayer();
   }
 
-  getPlayer(): void{
+  getPlayer(){
     const id = +this.route.snapshot.paramMap.get('account_id');
-    this.playerService.getPlayer().subscribe(players => this.player = players[account_id]);
+    this.playerService.getPlayer(id).subscribe(players => this.player = players);
 
   }
 

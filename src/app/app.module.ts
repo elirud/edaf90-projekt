@@ -9,6 +9,7 @@ import { PlayerComponent } from './player/player.component';
 import { HeroComponent } from './hero/hero.component';
 import { MatchComponent } from './match/match.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
+import { PlayerSearchComponent} from './player-search/player-search.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
     PlayerComponent,
     HeroComponent,
     MatchComponent,
+    PlayerSearchComponent,
     HeroSearchComponent
   ],
   imports: [

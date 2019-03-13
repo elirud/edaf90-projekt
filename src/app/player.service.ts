@@ -17,13 +17,13 @@ export class PlayerService {
 
    }
    //GET all players
-   getPlayers(): Observable<Player[]> {
-     return this.http.get<Player[]>(this.playerURL + this.apiKey);
-   }
+   //getPlayers(): Observable<Player[]> {
+   //  return this.http.get<Player[]>(this.playerURL + this.apiKey);
+   //}
 
    //GET uno player
    getPlayer(account_id: number) : Observable<Player>{
-     return this.http.get<Player[]>(`${this.playerURL + this.apiKey}`)[account_id];
+     return this.http.get<Player>(`${this.playerURL + account_id + this.apiKey}`);
    }
 
 
