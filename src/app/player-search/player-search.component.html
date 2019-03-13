@@ -3,9 +3,9 @@
   <h3>Player Search</h3>
   <i>Use player ID not player nickname.</i>
 
-    <input #playerid ng-model="searchText">
+    <input #playerid placeholder="Player ID" ng-model="searchText">
 
-    <button routerLink="/player-detail/{{playerid" ng-click="getPlayer(playerid)" class="search-button">Search</button>
+    <button (click)="getPlayer(playerid.value)" routerLink="/player-detail/{{player.account_id}}" class="search-button">Search</button>
 
 
 
