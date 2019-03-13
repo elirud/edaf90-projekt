@@ -27,6 +27,7 @@ export class HeroService {
 
   /**
    * GET hero based on id
+   * @param id - id on hero to retrieve
    */
   getHero(id: number): Observable<Hero> {
     return this.http.get<Hero[]>(`${this.heroesUrl + this.apiKey}`)[id];
@@ -34,6 +35,7 @@ export class HeroService {
 
   /**
    *  GET heroes whose name contains search term
+   *  @param term - string to search with
    */
   searchHeroes(term: string): Observable<Hero[]> {
     if (!term.trim()) {
@@ -49,7 +51,8 @@ export class HeroService {
   }
 
   /**
-   *  GET matchup data for hero with id
+   *  GET 7 highest winrate matchups for hero with id
+   *  @param id - id of hero to get matchups for
    */
   getMatchups(id: number): Observable<Matchup[]> {
     return this.http.get<Matchup[]>('https://api.opendota.com/api/heroes/' + id + '/matchups' + this.apiKey).pipe(
