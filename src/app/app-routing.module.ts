@@ -1,7 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HeroComponent } from './hero/hero.component';
+import { HeroSearchComponent} from './hero-search/hero-search.component';
+import { MatchComponent} from './match/match.component';
+import { PlayerComponent} from './player/player.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: 'herosearch', component: HeroSearchComponent },
+  { path: 'matches', component: MatchComponent },
+  { path: 'players', component: PlayerComponent },
+  { path: 'detail/:id', component: HeroComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -1,3 +1,8 @@
-<p>
-  hero works!
-</p>
+
+<div style="width:200px; margin:0 auto;" *ngIf="hero" class="grid grid-pad">
+  <h3>Hero details</h3>
+  <h4>{{hero.localized_name}} has {{hero.legs}} legs</h4>
+  <button (click)="goBack()">go back</button>
+</div>
+
+
