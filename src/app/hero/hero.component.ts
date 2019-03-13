@@ -28,8 +28,9 @@ export class HeroComponent implements OnInit {
   }
   getHero(): void {
     const id = +this.route.snapshot.paramMap.get('id');
+    console.log(id);
     this.heroService.getHeroes()
-      .subscribe(heroes => this.hero = heroes[id - 1]);
+      .subscribe(heroes => this.hero = heroes.filter(hero => hero.id === id )[0]);
   }
   getMatchups(): void {
     const id = +this.route.snapshot.paramMap.get('id');
