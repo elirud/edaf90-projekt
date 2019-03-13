@@ -13,6 +13,8 @@ import {Player} from '../player';
 })
 export class PlayerComponent implements OnInit {
 
+  player: Player;
+
   constructor(
     private route:ActivatedRoute,
     private location: Location,
