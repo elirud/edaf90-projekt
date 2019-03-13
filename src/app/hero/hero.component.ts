@@ -4,6 +4,7 @@ import {Location} from '@angular/common';
 
 import {HeroService} from '../hero.service';
 import {Hero} from '../hero';
+import {Matchup} from '../matchup';
 
 @Component({
   selector: 'app-hero',
@@ -12,6 +13,8 @@ import {Hero} from '../hero';
 })
 export class HeroComponent implements OnInit {
   hero: Hero;
+  matchups: Matchup[];
+
 
   constructor(
     private route: ActivatedRoute,
@@ -21,11 +24,16 @@ export class HeroComponent implements OnInit {
 
   ngOnInit() {
      this.getHero();
+     this.getMatchups();
   }
   getHero(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.heroService.getHeroes()
       .subscribe(heroes => this.hero = heroes[id]);
+  }
+  getMatchups(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.heroService.getMatchups(id).subscribe(matchups => this.matchups = matchups);
   }
   goBack(): void {
     this.location.back();
