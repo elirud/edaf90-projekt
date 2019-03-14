@@ -22,7 +22,7 @@ export class PlayerService {
    //}
 
    //GET uno player
-   getPlayer(account_id: number) : Observable<Player>{
+   getPlayer(account_id: number) : Observable<Player> {
      return this.http.get<Player>(`${this.playerURL + account_id + this.apiKey}`);
    }
 

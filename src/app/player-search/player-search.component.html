@@ -5,7 +5,7 @@
 
     <input #playerid placeholder="Player ID" ng-model="searchText">
 
-    <button (click)="getPlayer(playerid.value)" routerLink="/player-detail/{{player.account_id}}" class="search-button">Search</button>
+    <button (click)="getPlayer(playerid.value)" routerLink="/player-detail/{{player.profile.account_id}}" class="search-button">Search</button>
 
 
 

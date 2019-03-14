@@ -8,7 +8,7 @@ import { PlayerSearchComponent} from './player-search/player-search.component';
 const routes: Routes = [
   { path: 'herosearch', component: HeroSearchComponent },
   { path: 'playersearch', component: PlayerSearchComponent },
-  { path: 'player-detail/:account_id', component: PlayerComponent },
+  { path: 'player-detail/:id', component: PlayerComponent },
   { path: 'detail/:id', component: HeroComponent },
 ];
 
