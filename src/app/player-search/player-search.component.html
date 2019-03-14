@@ -5,8 +5,11 @@
 
     <input #playerid placeholder="Player ID" ng-model="searchText">
 
-    <a routerLink="/player-detail/{{playerid.value}}"> <button (click)="getPlayer(playerid.value)"  class="search-button">Search</button>
+    <a routerLink="/player-detail/{{playerid.value}}"> <button mat-button (click)="getPlayer(playerid.value)"  class="search-button">Search</button>
     </a>
+    <button mat-icon-button [mat-menu-trigger-for]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
 
 
 </div>
