@@ -1,26 +1,78 @@
 <ul>
-    <button mat-icon-button [mat-menu-trigger-for]="menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
 
-  <mat-card-title><p>{{player.profile.personaname}}</p></mat-card-title>
-  <p>{{player.solo_competitive_rank}}</p>
-  <p>{{player.competitive_rank}}</p>
-  <p>{{player.leaderboard_rank}}</p>
-  <p>{{player.profile.account_id}}</p>
+  <mat-card >
+  <mat-card-header>
+      <img mat-card-avatar style="
+      height:100px !important;
+      width:100px !important;
+      font-size:100px !important;" class="material-icons" src="{{player.profile.avatarfull}}">
+      <mat-card-title>{{player.profile.personaname}}</mat-card-title>
+  </mat-card-header>
+  </mat-card>
+
+  <mat-card >
+      <mat-card-header>
+  <mat-card-title>MMR: {{player.mmr_estimate.estimate}}</mat-card-title>
+</mat-card-header>
+</mat-card>
+
+  <mat-card >
+      <mat-card-header>
+  <mat-card-title>Solo competitive rank: {{player.solo_competitive_rank}}</mat-card-title>
+  </mat-card-header>
+  </mat-card>
+
+  <mat-card >
+      <mat-card-header>
+  <mat-card-title>Competitive rank: {{player.competitive_rank}}</mat-card-title>
+</mat-card-header>
+</mat-card>
+
+<mat-card>
+    <mat-card-header>
+  <mat-card-title>Leaderboard rank: {{player.leaderboard_rank}}</mat-card-title>
+</mat-card-header>
+</mat-card>
+
+<mat-card >
+    <mat-card-header>
+  <mat-card-title>Profile name: {{player.profile.name}}</mat-card-title>
+</mat-card-header>
+</mat-card>
+
+<mat-card >
+    <mat-card-header>
+  <mat-card-title>Account-id: {{player.profile.account_id}}</mat-card-title>
+</mat-card-header>
+</mat-card>
+
+  <mat-card>
+      <mat-card-header>
+  <mat-card-title>Steam-id: {{player.profile.steamid}}</mat-card-title>
+</mat-card-header>
+</mat-card>
+
   
-  <p>{{player.profile.name}}</p>
-  <p>{{player.profile.plus}}</p>
-  <p>{{player.profile.cheese}}</p>
-  <mat-card-subtitle><p> {{player.profile.steamid}}</p></mat-card-subtitle>
-  <img src="{{player.profile.avatar}}">
-  <img src="{{player.profile.avatarmedium}}">
-  <img src="{{player.profile.avatarfull}}">
-  <p>{{player.profile.profileurl}}</p>
-  <p>{{player.profile.last_login}}</p>
-  <p>{{player.profile.loccountrycode}}</p>
-  <p>{{player.profile.is_contributor}}</p>
-  <p>{{player.rank_tier}}</p>
-  <p>{{player.mmr_estimate.estimate}}</p>
-  <button (click)="goBack()">go back</button>
+  <mat-card >
+      <mat-card-header>
+  <mat-card-title>Profile-URL: {{player.profile.profileurl}}</mat-card-title>
+</mat-card-header>
+</mat-card>
+
+  <mat-card class="example-class">
+      <mat-card-header>
+  <mat-card-title>Last-login: {{player.profile.last_login}}</mat-card-title>
+</mat-card-header>
+</mat-card>
+
+  <mat-card class="example-class">
+      <mat-card-header>
+  <mat-card-title>Country-code: {{player.profile.loccountrycode}}</mat-card-title>
+</mat-card-header>
+</mat-card>
+
+
+  <button mat-button (click)="goBack()">Go back</button>
+
+  
 </ul>
