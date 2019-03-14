@@ -2,10 +2,10 @@
 
   <h3>Player Search</h3>
   <i>Use player ID not player nickname.</i>
-
-    <input #playerid placeholder="Player ID" ng-model="searchText">
-
-    <a routerLink="/player-detail/{{playerid.value}}"> <button mat-button (click)="getPlayer(playerid.value)"  class="search-button">Search</button>
+    
+    <input #playerid placeholder="Player ID" ng-model="searchText" >
+  
+    <a routerLink="/player-detail/{{playerid.value}}"> <button mat-flat-button (click)="getPlayer(playerid.value)"  class="search-button">Search</button>
     </a>
     
 
