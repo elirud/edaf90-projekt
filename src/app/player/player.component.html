@@ -1,13 +1,18 @@
 <ul>
+    <button mat-icon-button [mat-menu-trigger-for]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+
+  <mat-card-title><p>{{player.profile.personaname}}</p></mat-card-title>
   <p>{{player.solo_competitive_rank}}</p>
   <p>{{player.competitive_rank}}</p>
   <p>{{player.leaderboard_rank}}</p>
   <p>{{player.profile.account_id}}</p>
-  <p>{{player.profile.personaname}}</p>
+  
   <p>{{player.profile.name}}</p>
   <p>{{player.profile.plus}}</p>
   <p>{{player.profile.cheese}}</p>
-  <p>{{player.profile.steamid}}</p>
+  <mat-card-subtitle><p> {{player.profile.steamid}}</p></mat-card-subtitle>
   <img src="{{player.profile.avatar}}">
   <img src="{{player.profile.avatarmedium}}">
   <img src="{{player.profile.avatarfull}}">

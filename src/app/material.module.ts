@@ -5,7 +5,8 @@ import { NgModule } from '@angular/core';
       MatMenuModule,
       MatToolbarModule,
       MatIconModule,
-      MatCardModule
+      MatCardModule,
+      MatDividerModule
     } from '@angular/material';
 
     @NgModule({
@@ -14,6 +15,7 @@ import { NgModule } from '@angular/core';
         MatMenuModule,
         MatToolbarModule,
         MatIconModule,
+        MatDividerModule,
         MatCardModule
       ],
       exports: [
@@ -21,6 +23,7 @@ import { NgModule } from '@angular/core';
         MatMenuModule,
         MatToolbarModule,
         MatIconModule,
+        MatDividerModule,
         MatCardModule
       ]
     })
