@@ -13,4 +13,5 @@ export class MatchUp {
   hero_id: number;
   games_played: string;
   wins: string;
+  name: string;
 }

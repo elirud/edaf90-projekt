@@ -14,7 +14,7 @@ import { Hero, MatchUp } from './hero';
 export class HeroService {
   private heroesUrl = 'https://api.opendota.com/api/heroes/';  // URL to web api
   private apiKey = '?api_key=67a592dc-4f72-48f6-b9f5-b4749e4b8ef2';
-  heroes: Hero[];
+  private heroes: Hero[];
   constructor(private http: HttpClient) {  }
 
   loadHeroes() {
@@ -79,11 +79,11 @@ export class HeroService {
             return 0;
           }
         })),
-        map(data => data.slice(0, 7)))]);
+        map(data => data.slice(0, 7))) ]);
   }
 
-  getHeroFromAPI(id: number): Observable<Hero[]> {
-    return this.http.get<Hero>(`${this.heroesUrl + this.apiKey}`).pipe(map(hero => hero. === id)[0]);
+  getHeroFromAPI(id: number): Observable<Hero> {
+    return this.http.get<Hero>(`${this.heroesUrl + this.apiKey}`).pipe(filter(hero => hero.id === id))[0];
   }
 
 

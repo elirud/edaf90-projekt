@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+  import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import {HeroService} from '../hero.service';
 import {Hero, MatchUp} from '../hero';
+import {Observable} from 'rxjs';
 
 
 
@@ -14,26 +15,34 @@ import {Hero, MatchUp} from '../hero';
 })
 export class HeroComponent implements OnInit {
   hero: Hero;
+  matchUpNames: string[];
+  private heroes: Hero[];
 
   constructor(
     private route: ActivatedRoute,
     private location: Location,
     private heroService: HeroService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
-     this.getHero();
+    this.heroes = this.heroService.getHeroesSync()
+    this.getHero();
   }
+
   getHero(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.heroService.getHeroWithMatchUpsFromAPI(id)
       .subscribe(res => {
         (res[0] as any).matchUps = res[1];
-        this.hero = res.filter(hero => hero.id === id )[0];
+        this.hero = res[0];
       });
   }
 
   goBack(): void {
     this.location.back();
+  }
+  getHeroName(id: number): string {
+    return this.heroes.filter( hero => hero.id === id)[0].localized_name;
   }
 }
