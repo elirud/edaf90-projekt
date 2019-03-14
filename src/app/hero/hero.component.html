@@ -5,9 +5,9 @@
   <h5>{{hero.localized_name}} has {{hero.legs}} legs</h5>
 
   <div> Counters
-    <ul *ngFor="let matchup of matchups">
+    <ul *ngFor="let matchup of hero.matchUps">
       {{(matchup.wins/matchup.games_played).toString().substring(2, 4)}} % against
-      {{matchup.name}}
+      {{matchup.hero_id}}
     </ul>
   </div>
   <button (click)="goBack()">go back</button>

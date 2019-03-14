@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-import {Observable, of} from 'rxjs';
-import {catchError, filter, flatMap, map, tap, toArray} from 'rxjs/operators';
+import {forkJoin, Observable, of} from 'rxjs';
+import {catchError, filter, flatMap, map, mergeMap, tap, toArray} from 'rxjs/operators';
 
 import { Hero, MatchUp } from './hero';
 
@@ -18,7 +18,9 @@ export class HeroService {
   constructor(private http: HttpClient) {  }
 
   loadHeroes() {
-    this.http.get<Hero[]>(`${this.heroesUrl + this.apiKey}`).subscribe(heroes => this.heroes = heroes);
+    this.http.get<Hero[]>(`${this.heroesUrl + this.apiKey}`).subscribe(heroes => {
+      this.heroes = heroes;
+    });
   }
 
   getHeroNameSync(id: number): string {
@@ -31,20 +33,7 @@ export class HeroService {
   getHeroesSync() {
     return this.heroes;
   }
-  /**
-   * GET all heroes
-   */
-  getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.heroesUrl + this.apiKey);
-  }
 
-  /**
-   * GET hero based on id
-   * @param id - id on hero to retrieve
-   */
-  getHeroFromAPI(id: number): Observable<Hero> {
-    return this.http.get<Hero[]>(`${this.heroesUrl + this.apiKey}`).pipe(map(obs => obs.filter(hero => hero.id === id)[0]));
-  }
 
   /**
    *  GET heroes whose name contains search term
@@ -62,24 +51,34 @@ export class HeroService {
       catchError(this.handleError<Hero[]>('searchHeroes', []))
     );
   }
+  /**
+   * GET all heroes
+   */
+  getHeroes(): Observable<Hero[]> {
+    return this.http.get<Hero[]>(this.heroesUrl + this.apiKey);
+  }
 
   /**
-   *  GET 7 highest winrate matchups for hero with id
-   *  @param id - id of hero to get matchups for
+   * GET hero based on id
+   * @param id - id on hero to retrieve
    */
-  getMatchups(id: number): Observable<MatchUp[]> {
-    // TODO COMBINE HTTP REQUESTS
-    return this.http.get<MatchUp[]>('https://api.opendota.com/api/heroes/' + id + '/matchups' + this.apiKey).pipe(
-      map(data => data.filter(a => +a.games_played > 10)),
-      map(results => results.sort((a, b) => {
-        if (+a.wins / +a.games_played > +b.wins / +b.games_played) {
-          return -1;
-        } else {
-          return 1;
-        }
-      })),
-      map(data => data.slice(0, 7)));
+  getHeroFromAPI(id: number): Observable<any[]> {
+
+    return forkJoin([this.http.get<Hero[]>(`${this.heroesUrl + this.apiKey}`).pipe(
+      map
+      (obs => obs.filter(hero => hero.id === id)[0])),
+      this.http.get<MatchUp[]>(this.heroesUrl + id + '/matchups' + this.apiKey).pipe(
+        map(data => data.filter(a => +a.games_played > 10)),
+        map(results => results.sort((a, b) => {
+          if (+a.wins / +a.games_played > +b.wins / +b.games_played) {
+            return -1;
+          } else {
+            return 1;
+          }
+        })),
+        map(data => data.slice(0, 7)))]);
   }
+
 
 
 
