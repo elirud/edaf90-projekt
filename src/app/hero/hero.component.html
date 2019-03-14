@@ -4,10 +4,10 @@
   <img src="https://api.opendota.com/apps/dota2/images/heroes/{{hero.name.toLowerCase().replace('npc_dota_hero_', '')}}_full.png"/>
   <h5>{{hero.localized_name}} has {{hero.legs}} legs</h5>
 
-  <div> Counters
+  <div> Counters ( winrate % )
     <ul *ngFor="let matchup of hero.matchUps">
-      {{(matchup.wins/matchup.games_played).toString().substring(2, 4)}} % against
       {{getHeroName(matchup.hero_id)}}
+       ({{(matchup.wins/matchup.games_played).toString().substring(2, 4)}} %)
     </ul>
   </div>
   <button (click)="goBack()">go back</button>
