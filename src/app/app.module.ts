@@ -9,6 +9,7 @@ import { PlayerComponent } from './player/player.component';
 import { HeroComponent } from './hero/hero.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { PlayerSearchComponent} from './player-search/player-search.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PlayerSearchComponent} from './player-search/player-search.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NoopAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
