@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import {HeroService} from '../hero.service';
-import {Hero} from '../hero';
-import {Matchup} from '../matchup';
+import {Hero, MatchUp} from '../hero';
+
 
 
 @Component({
@@ -14,7 +14,7 @@ import {Matchup} from '../matchup';
 })
 export class HeroComponent implements OnInit {
   hero: Hero;
-  matchups: Matchup[];
+  //matchups: MatchUp[];
 
 
   constructor(
@@ -28,7 +28,6 @@ export class HeroComponent implements OnInit {
      this.getMatchups();
      this.initHeroesList();
      console.log(this.heroService.getHeroesSync());
-     this.setMatchupName();
   }
   getHero(): void {
     const id = +this.route.snapshot.paramMap.get('id');
@@ -38,13 +37,7 @@ export class HeroComponent implements OnInit {
 
   getMatchups(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.heroService.getMatchups(id).subscribe(matchups => this.matchups = matchups);
-  }
-
-  setMatchupName(): void {
-    this.matchups.forEach(matchup => {
-      matchup.name = this.heroService.getHeroNameSync(matchup.hero_id);
-    });
+    this.heroService.getMatchups(id).subscribe(matchups => this.hero.matchUps = matchups);
   }
 
   initHeroesList() {

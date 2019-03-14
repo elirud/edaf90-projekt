@@ -4,8 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {catchError, filter, flatMap, map, tap, toArray} from 'rxjs/operators';
 
-import { Hero } from './hero';
-import { Matchup} from './matchup';
+import { Hero, MatchUp } from './hero';
 
 
 
@@ -43,7 +42,7 @@ export class HeroService {
    * GET hero based on id
    * @param id - id on hero to retrieve
    */
-  getHero(id: number): Observable<Hero> {
+  getHeroFromAPI(id: number): Observable<Hero> {
     return this.http.get<Hero[]>(`${this.heroesUrl + this.apiKey}`).pipe(map(obs => obs.filter(hero => hero.id === id)[0]));
   }
 
@@ -68,11 +67,12 @@ export class HeroService {
    *  GET 7 highest winrate matchups for hero with id
    *  @param id - id of hero to get matchups for
    */
-  getMatchups(id: number): Observable<Matchup[]> {
-    return this.http.get<Matchup[]>('https://api.opendota.com/api/heroes/' + id + '/matchups' + this.apiKey).pipe(
-      map(data => data.filter(a => a.games_played > 10)),
+  getMatchups(id: number): Observable<MatchUp[]> {
+    // TODO COMBINE HTTP REQUESTS
+    return this.http.get<MatchUp[]>('https://api.opendota.com/api/heroes/' + id + '/matchups' + this.apiKey).pipe(
+      map(data => data.filter(a => +a.games_played > 10)),
       map(results => results.sort((a, b) => {
-        if (a.wins / a.games_played > b.wins / b.games_played) {
+        if (+a.wins / +a.games_played > +b.wins / +b.games_played) {
           return -1;
         } else {
           return 1;

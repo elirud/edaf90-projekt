@@ -1,4 +1,4 @@
-import {Matchup} from './matchup';
+//import {Matchup} from './matchup';
 import {$} from 'protractor';
 import {HeroService} from './hero.service';
 
@@ -12,17 +12,11 @@ export class Hero {
   attack_type: string;
   roles: [];
   legs: number;
-
-  m
-
-  displayName() {
-    console.log(this.name);
-  }
-
-  constructor(heroService: HeroService) {}
+  matchUps: MatchUp[];
 }
-class Matchup {
-  hero_id: number,
-  games_played: string,
-  wins: string
+
+export class MatchUp {
+  hero_id: number;
+  games_played: string;
+  wins: string;
 }
