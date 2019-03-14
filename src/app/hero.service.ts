@@ -22,6 +22,10 @@ export class HeroService {
     this.http.get<Hero[]>(`${this.heroesUrl + this.apiKey}`).subscribe(heroes => this.heroes = heroes);
   }
 
+  getHeroNameSync(id: number): string {
+    return this.heroes.find(hero => hero.id === id).name;
+  }
+
   /**
    * Retrieves static heroes from heroservice
    */

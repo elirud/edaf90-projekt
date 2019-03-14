@@ -7,7 +7,7 @@
   <div> Counters
     <ul *ngFor="let matchup of matchups">
       {{(matchup.wins/matchup.games_played).toString().substring(2, 4)}} % against
-      {{hero.localized_name}}
+      {{matchup.name}}
     </ul>
   </div>
   <button (click)="goBack()">go back</button>

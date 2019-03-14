@@ -27,6 +27,8 @@ export class HeroComponent implements OnInit {
      this.getHero();
      this.getMatchups();
      this.initHeroesList();
+     console.log(this.heroService.getHeroesSync());
+     this.setMatchupName();
   }
   getHero(): void {
     const id = +this.route.snapshot.paramMap.get('id');
@@ -38,6 +40,13 @@ export class HeroComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.heroService.getMatchups(id).subscribe(matchups => this.matchups = matchups);
   }
+
+  setMatchupName(): void {
+    this.matchups.forEach(matchup => {
+      matchup.name = this.heroService.getHeroNameSync(matchup.hero_id);
+    });
+  }
+
   initHeroesList() {
     this.heroService.loadHeroes();
   }
