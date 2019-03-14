@@ -6,8 +6,19 @@
 
   <div> Counters ( winrate % )
     <ul *ngFor="let matchup of hero.matchUps">
-      {{getHeroName(matchup.hero_id)}}
+      
+
+
+  <mat-card >
+  <mat-card-header>
+      <mat-card-title>{{getHeroName(matchup.hero_id)}}</mat-card-title>
+      <img mat-card-avatar style="
+        height:100px !important;
+        width:100px !important;
+        font-size:100px !important;" class="material-icons" src="https://api.opendota.com/apps/dota2/images/heroes/{{getHeroName(matchup.hero_id).toLowerCase().replace('npc_dota_hero_', '')}}_full.png">
        ({{(matchup.wins/matchup.games_played).toString().substring(2, 4)}} %)
+      </mat-card-header>
+      </mat-card>
     </ul>
   </div>
   <button (click)="goBack()">go back</button>
