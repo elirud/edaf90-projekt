@@ -1,9 +1,3 @@
-//import {Matchup} from './matchup';
-import {$} from 'protractor';
-import {HeroService} from './hero.service';
-
-
-
 export class Hero {
   id: number;
   name: string;

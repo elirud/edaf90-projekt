@@ -59,10 +59,11 @@ export class HeroService {
   }
 
   /**
-   * GET hero based on id
+   * GET hero based on id with match up data
    * @param id - id on hero to retrieve
+   * @return Observable, the hero
    */
-  getHeroFromAPI(id: number): Observable<any[]> {
+  getHeroWithMatchUpsFromAPI(id: number): Observable<any[]> {
 
     return forkJoin([this.http.get<Hero[]>(`${this.heroesUrl + this.apiKey}`).pipe(
       map
@@ -72,14 +73,18 @@ export class HeroService {
         map(results => results.sort((a, b) => {
           if (+a.wins / +a.games_played > +b.wins / +b.games_played) {
             return -1;
-          } else {
+          } else if (+a.wins / +a.games_played < +b.wins / +b.games_played) {
             return 1;
+          } else {
+            return 0;
           }
         })),
         map(data => data.slice(0, 7)))]);
   }
 
-
+  getHeroFromAPI(id: number): Observable<Hero[]> {
+    return this.http.get<Hero>(`${this.heroesUrl + this.apiKey}`).pipe(map(hero => hero. === id)[0]);
+  }
 
 
   /**
