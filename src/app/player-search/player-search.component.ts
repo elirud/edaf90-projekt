@@ -18,7 +18,6 @@ import { PlayerService } from '../player.service';
 export class PlayerSearchComponent implements OnInit {
   player: Player;
 
-
   constructor(private playerService: PlayerService) {}
 
   ngOnInit(): void {
