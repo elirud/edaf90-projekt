@@ -45,4 +45,7 @@ export class HeroComponent implements OnInit {
   getHeroName(id: number): string {
     return this.heroes.filter( hero => hero.id === id)[0].localized_name;
   }
+  getHeroLinkName(id: number): string {
+    return this.heroes.filter( hero => hero.id === id)[0].name;
+  }
 }
