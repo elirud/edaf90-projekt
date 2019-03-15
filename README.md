@@ -29,6 +29,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Testing player page
 Below player-ids can be used:
 
-41729661
 154781074
 186911287
