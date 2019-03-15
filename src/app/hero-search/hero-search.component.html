@@ -1,12 +1,7 @@
 <div style="width:200px; margin:0 auto;" id="search-component" ng-app="edaf90-projekt">
   <h4>Hero Search</h4>
 
-<p>
-  <mat-form-field appearance="outline">
-    <mat-label>Hero Search</mat-label>
-    <input matInput #searchBox id="search-box" (input)="search(searchBox.value)" placeholder="Hero name"/>
-  </mat-form-field>
-</p>
+    <input #searchBox id="search-box" (input)="search(searchBox.value)" placeholder="Hero name"/>
 
   <ul class="search-result">
     <li *ngFor="let hero of heroes$ | async" >
