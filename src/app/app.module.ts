@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SearchComponent } from './search/search.component';
 import { PlayerComponent } from './player/player.component';
 import { HeroComponent } from './hero/hero.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
@@ -15,7 +14,6 @@ import { MaterialModule } from './material.module';
 @NgModule({
   declarations: [
     AppComponent,
-    SearchComponent,
     PlayerComponent,
     HeroComponent,
     PlayerSearchComponent,
